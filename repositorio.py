@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, json
 import sqlite3
-import os
+
 
 #id generator
 def gerar_id():

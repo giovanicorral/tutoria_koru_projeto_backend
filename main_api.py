@@ -19,7 +19,7 @@ def get_product(id):
     else:
         return jsonify({"message": "Produto não encontrado!"}), 404
     
-#ROTA PARA CADASTRAR UM PERSONAGEM
+#ROTA PARA CADASTRAR UM PRODUTO
 @app.route("/products", methods=["POST"])
 def criar_produtos():
     product = request.json
@@ -27,8 +27,8 @@ def criar_produtos():
     product["id"] = id_product
     return jsonify(product), 201
 
-#ROTA PARA ALTERAR UM PERSONAGEM
-@app.route("/prodocts/<int:id>", methods=["PUT"])
+#ROTA PARA ALTERAR UM PRODUTO
+@app.route("/products/<int:id>", methods=["PUT"])
 def atualizar_produto(id):
     product = repositorio.retornar_produto(id)
     if product:
@@ -39,14 +39,14 @@ def atualizar_produto(id):
     else:
         return jsonify({"message": "Produto não encontrado"}), 404
     
-#ROTA PARA DELETAR UM PERSONAGEM
+#ROTA PARA DELETAR UM PRODUTO
 @app.route("/products/<int:id>", methods=["DELETE"])
 def remover_produto(id):
-    product = repositorio.retornar_produto
-    if product:
-        repositorio.remover_produto(id)
-        return jsonify({"message":"Produto removido com sucesso"})
-    else:
-        return jsonify({"message":"Produto não encontrado"}), 404
+        product = repositorio.retornar_produto(id)
+        if product:
+            repositorio.remover_produto(id)
+            return jsonify({"message":"Produto removido com sucesso"})
+        else:
+            return jsonify({"message":"Produto não encontrado"}), 404
 
 app.run(debug=True)
