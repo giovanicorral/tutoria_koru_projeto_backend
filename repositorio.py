@@ -87,19 +87,19 @@ def retornar_produtos() -> list:
         cursor.execute(sql_select)
         produtos = cursor.fetchall()
         conn.close()
-        for item in produtos:
+        for item in produtos: #Para cada item em produto vou criar um objeto com o nome de produto que vai ser um dicionário
             produtos = {
-                'id':item [0],
+                'id':item [0], #Cada valor em colchete é a posição na tabela
                 'name':item [1],
                 'description':item [2],
                 'brand':item [3],
                 'price':item [4],
                 'weight':item [5]
             }
-            resultado.append(produtos)
+            resultado.append(produtos) #Percorremos cada resultado que veio e transformando em dicionário e colocamos na nossa lista 'resultado'
         
         conn.close()
-        return resultado
+        return resultado 
     except Exception as ex:
         print(ex)
         return False
