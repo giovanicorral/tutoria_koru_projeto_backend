@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-import dictionary
+import dictionary, repositorio
 
 app = Flask(__name__)
 
